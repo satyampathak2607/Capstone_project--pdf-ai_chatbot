@@ -4,6 +4,5 @@ python-dotenv
 openai
 transformers
 pymupdf
-torch==2.0.1+cpu
-
+torch
 pydantic
