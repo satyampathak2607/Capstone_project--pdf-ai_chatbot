@@ -5,18 +5,24 @@ from transformers import pipeline
 from concurrent.futures import ThreadPoolExecutor
 import asyncio
 from fastapi.concurrency import run_in_threadpool
-import openai
+from openai import OpenAI
 from dotenv import load_dotenv
+import torch
 load_dotenv()
 AI_KEY = os.environ.get("AI_KEY")
 print(f"[DEBUG] AI_KEY loaded: {AI_KEY}")
-openai.api_key = AI_KEY
-openai.api_base = "https://openrouter.ai/api/v1"
+client = OpenAI(
+    api_key=os.environ.get("AI_KEY"),
+    base_url="https://openrouter.ai/api/v1"
+)
 
 
 summarize_router = APIRouter()
 executor = ThreadPoolExecutor(max_workers=4)
-summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
+device = 0 if torch.cuda.is_available() else -1
+summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", device=device)
+print(f"[GPU] Using device: {'CUDA' if device == 0 else 'CPU'}")
+
 
 PDF_DIR = os.path.abspath("pdfs")
 
@@ -113,3 +119,11 @@ async def summarize_pdf():
     except Exception as e:
         print(f"[❌] Summarization failed: {e}")
         raise HTTPException(status_code=500, detail=f"Summarization failed: {str(e)}")
+
+@summarize_router.get("/status")
+def get_status():
+    import torch
+    return {
+        "device": "GPU" if torch.cuda.is_available() else "CPU",
+        "gpu_name": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "None"
+    }
