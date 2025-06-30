@@ -6,3 +6,4 @@ transformers
 pymupdf
 torch
 pydantic
+python-multipart
