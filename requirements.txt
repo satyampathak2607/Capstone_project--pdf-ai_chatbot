@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-dotenv
+openai
+transformers
+pymupdf
+torch
+pydantic
+python-multipart
+gunicorn
