@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff007f 0%, #4b0055 50%, #001f3f 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.container {
+  max-width: 700px;
+  width: 90%;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid #ff007f;
+  box-shadow: 0 0 25px rgba(255, 0, 127, 0.3);
+  color: #ffffff;
+  animation: fadeIn 1s ease;
+}
+
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ff4fa1;
+  text-shadow: 0 0 10px #ff4fa1, 0 0 20px #ff1f75;
+}
+
+input[type="file"] {
+  margin-bottom: 12px;
+  color: white;
+  background-color: transparent;
+  border: 1px solid #ff3399;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+button {
+  background-color: transparent;
+  color: #ff66a3;
+  border: 1px solid #ff66a3;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff007f;
+  color: #fff;
+  box-shadow: 0 0 10px #ff007f;
+}
+
+.status {
+  margin: 12px 0;
+  font-style: italic;
+  color: #ffcce6;
+}
+
+.chat-box {
+  margin-top: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ff66a3;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.chat-item {
+  margin-bottom: 14px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-left: 4px solid #ff66a3;
+}
+
+.chat-item p {
+  margin: 5px 0;
+  color: #ffd6ea;
+}
+
+.chat-input {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ff3399;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+}
+
+.chat-input button {
+  padding: 10px 18px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
