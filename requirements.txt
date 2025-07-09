@@ -4,7 +4,8 @@ python-dotenv
 openai
 transformers
 pymupdf
-torch
+torch>=2.6.0
+requests
 pydantic
 python-multipart
 gunicorn
