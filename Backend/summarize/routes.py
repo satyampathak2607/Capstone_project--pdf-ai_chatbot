@@ -7,7 +7,7 @@ import asyncio
 from fastapi.concurrency import run_in_threadpool
 from openai import OpenAI
 from dotenv import load_dotenv
-import torch
+
 load_dotenv()
 AI_KEY = os.environ.get("AI_KEY")
 print(f"[DEBUG] AI_KEY loaded: {AI_KEY}")
@@ -120,10 +120,3 @@ async def summarize_pdf():
         print(f"[❌] Summarization failed: {e}")
         raise HTTPException(status_code=500, detail=f"Summarization failed: {str(e)}")
 
-@summarize_router.get("/status")
-def get_status():
-    import torch
-    return {
-        "device": "GPU" if torch.cuda.is_available() else "CPU",
-        "gpu_name": torch.cuda.get_device_name(0) if torch.cuda.is_available() else "None"
-    }
