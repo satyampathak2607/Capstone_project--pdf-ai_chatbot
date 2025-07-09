@@ -8,6 +8,7 @@ upload_router = APIRouter()
 executor = ThreadPoolExecutor(max_workers=2)
 
 UPLOAD_DIR = os.path.abspath("pdfs")
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 def save_pdf_file(file: UploadFile, save_path: str):
     try:
