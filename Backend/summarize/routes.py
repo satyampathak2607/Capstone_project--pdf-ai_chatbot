@@ -19,9 +19,9 @@ client = OpenAI(
 
 summarize_router = APIRouter()
 executor = ThreadPoolExecutor(max_workers=4)
-device = 0 if torch.cuda.is_available() else -1
-summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", device=device)
-print(f"[GPU] Using device: {'CUDA' if device == 0 else 'CPU'}")
+
+summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
+
 
 
 PDF_DIR = os.path.abspath("pdfs")
